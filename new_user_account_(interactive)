@@ -1,2 +1,41 @@
-ORD}
+#!/bin/bash
+
+echo "Please enter your first name: "
+read FIRSTNAME
+
+# change firstname to title-cased format
+TITLED_FIRSTNAME=$(echo "$FIRSTNAME" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1')
+
+echo "Hello ${TITLED_FIRSTNAME}! Please enter your last name: "
+read LASTNAME
+
+# create username in lowercase
+USERNAME="${FIRSTNAME,,}.${LASTNAME,,}"
+
+echo "Please enter your new password (at least 8 characters): "
+read -s PASSWORD
+
+PASSWORD_LENGTH=0
+
+# password must be atleast 8 characters in length else, user must re-enter
+while [[ $PASSWORD_LENGTH -lt 8 ]];
+do
+    echo "Your password MUST have 8 or more characters. Please try again: "
+    read -s PASSWORD
+    PASSWORD_LENGTH=${#PASSWORD}
 done
+
+echo "Re-enter password to confirm: "
+read -s PASSWORD2
+
+# first & second password entries must match else, user must re-enter
+while [[ "$PASSWORD" != "$PASSWORD2" ]];
+do
+    echo "Please confirm password correctly: "
+    read -s PASSWORD2
+done
+
+# create new user account with a home directory
+sudo useradd -m -p $PASSWORD $USERNAME
+
+echo "Success!"
