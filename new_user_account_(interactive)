@@ -17,7 +17,7 @@ read -s PASSWORD
 
 PASSWORD_LENGTH=0
 
-# password must be atleast 8 characters in length else, user must re-enter
+# password must be atleast 8 characters in length. Else, user must re-enter
 while [[ $PASSWORD_LENGTH -lt 8 ]];
 do
     echo "Your password MUST have 8 or more characters. Please try again: "
@@ -28,7 +28,7 @@ done
 echo "Re-enter password to confirm: "
 read -s PASSWORD2
 
-# first & second password entries must match else, user must re-enter
+# first & second password entries must match. Else, user must re-enter
 while [[ "$PASSWORD" != "$PASSWORD2" ]];
 do
     echo "Please confirm password correctly: "
