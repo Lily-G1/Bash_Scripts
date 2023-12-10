@@ -38,4 +38,4 @@ done
 # create new user account with a home directory
 sudo useradd -m -p $PASSWORD $USERNAME
 
-echo "Success!"
+echo "Success! Your account is now active"
