@@ -1,5 +1,5 @@
 #!/bin/bash
-# View weather report in specified location
+# View weather report/forecast for a specified location
 
 PROGRAM_NAME=weather
 VERSION=1.0
