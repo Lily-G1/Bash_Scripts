@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Define variables
+BACKUP_SRC="/tmp"
+BACKUP_DEST="/backups"
+BACKUP_DATE=$(date +%Y-%m-%d)
+BACKUP_FILENAME="backup_$BACKUP_DATE.tar.gz"
+EMAIL_RECIPIENT="your_email@gmail.com"
+
+# Create backup directory
+mkdir -p "$BACKUP_DEST/$BACKUP_DATE"
+
+# Compress & archive source directory
+tar -czf "$BACKUP_DEST/$BACKUP_DATE/$BACKUP_FILENAME" "$BACKUP_SRC"
+
+# Verify success of backup
+if [ $? -eq 0 ]; 
+then
+    echo "Backup successful: $BACKUP_FILENAME"
+else
+    echo "Backup failed on $(date +%Y-%m-%d_%H-%M)"
+    # send email notification
+    echo "Ubuntu server: $(hostname) backup failed on $(date +%Y-%m-%d_%H-%M)" | mail -s "Backup failure notification" $EMAIL_RECIPIENT
+fi
