@@ -10,9 +10,10 @@
 - backup_script: a simple script that backs up a specified directory and sends an email notification in the event of a failure  
     - Replace the values of BACKUP_SRC and EMAIL_RECIPIENT with your desired source directory and a valid email address respectively  
     - To be able to send emails from your Linux server, you must install & configure the appropriate packages. Check out my [blogpost](https://medium.com/@anyagaladima_62348/integrate-gmail-with-an-ubuntu-server-by-lilian-galadima-4874356d406a) on how to integrate Gmail on an Ubuntu server
-- monitor_system.sh: along with a cron job, this scripts monitors/tracks and logs the health & performance of an ubuntu system. It sets thresholds for CPU, memory, disk, I/O, plus network usage, and sends an email to the administrator if any of these thresholds are breached
+- monitor_system.sh: along with a cron job, this scripts monitors/tracks and logs the health & performance of an ubuntu system. It sets thresholds for CPU, memory, disk, I/O, plus network usage, and sends an email to the administrator if any of these thresholds are breached  
   
 - cloud_based_backup.sh: backs up a specified directory using rsync. Archives, encrypts and copies backup to pre-existing S3 bucket via the AWS CLI
+  - You must have mailutils, AWS CLI & gpg installed  
   - You will be required to enter a passphrase to secure your encryption    
   - To download and decrypt the file from s3:  
     - `$ mkdir s3-downloads` >> create a dedicated directory to store downloads  
