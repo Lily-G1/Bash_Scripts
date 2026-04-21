@@ -1,5 +1,5 @@
 # Bash_Scripts
-## Automated scripts created with the Bash scripting language  
+## Automated scripts created with the Bash    
 - weather.sh: returns weather forecast for a specified location  
     - You must have 'curl' installed on your system `$ sudo apt install curl`   
     - Run script with -h / --help option to see help page OR -l <location> / --location <location> to see weather report of specified location. E.g:  
